@@ -8,3 +8,6 @@ https://forums.developer.nvidia.com/t/tensorrt-merges-wrongly-two-different-laye
 3. to produce the dummy model (which can be successfully run in TensorRT), you need to install mmdetection (https://github.com/open-mmlab/mmdetection) and replace the file in mmdetection ```/mmdet/ops/deform_conv.py``` with the enclosed ```/mmdet/deform_conv.py```. 
 
 4. the error occurs when I run the centernet onnx model provided herein (centernet_dcnv2_new.onnx).
+
+UPDATE:
+Our team has found that the problem was due to the slice operation in the implementation of CenterNet and it can be solved by using index_select operation instead.
